@@ -1,15 +1,14 @@
-console.log('hello world')
+console.log('hello world');
 
 const axios = require('axios');
 
-// Make a request for a user with a given ID
-axios.get('http://www.nemzetisport.hu')
-  .then(function (response) {
-    // handle success
-    console.log(response.data);
-    console.log('status: ', response.status);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
+const promiseOfResponse = axios.get('http://www.nemzetisport.hu');
+console.log(promiseOfResponse);
+
+const responseListener = () => {
+    console.log('promise resolved');
+    // console.log(promiseOfResponse);
+}
+
+promiseOfResponse.then(responseListener);
+console.log('end');
